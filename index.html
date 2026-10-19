@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07030a">
+<title>Một món quà dành cho em 💗</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:#07030a;color:#ffd6e6;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;overflow:hidden}
+.script{font-family:"Dancing Script","Segoe Script","Brush Script MT",cursive}
+.scene{position:fixed;inset:0;opacity:0;pointer-events:none;transition:opacity 1s;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.scene.on{opacity:1;pointer-events:auto}
+.star{position:fixed;border-radius:50%;background:#fff;animation:tw 3s ease-in-out infinite;pointer-events:none}
+@keyframes tw{50%{opacity:.15}}
+/* S1 */
+#s1{cursor:pointer;text-align:center}
+.gift{font-size:68px;animation:bob 2s ease-in-out infinite;filter:drop-shadow(0 0 18px #ff4fa3)}
+@keyframes bob{50%{transform:translateY(-10px) scale(1.06)}}
+.hint{font-size:14px;opacity:.75;margin-top:14px;letter-spacing:.03em}
+/* S2 bouquet */
+#bq{width:min(90vw,380px);max-height:74vh;overflow:visible}
+.bl{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:pop 1s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:var(--d)}
+.fade{opacity:0;animation:fi 1.2s forwards;animation-delay:var(--d)}
+@keyframes pop{to{transform:scale(1)}}
+@keyframes fi{to{opacity:1}}
+.bf{position:absolute;font-size:26px;filter:hue-rotate(300deg) saturate(.7) brightness(1.3);animation:flut 5s ease-in-out infinite}
+@keyframes flut{50%{transform:translate(18px,-26px) rotate(12deg)}}
+.pc{position:absolute;width:76px;aspect-ratio:3/4;object-fit:cover;object-position:center 25%;border:3px solid #fff;border-radius:8px;opacity:0;transform:scale(0) rotate(var(--r));animation:pc 1s forwards;animation-delay:var(--d);box-shadow:0 0 18px #ff4fa3aa}
+@keyframes pc{to{opacity:1;transform:scale(1) rotate(var(--r))}}
+.cap{margin-top:8px;font-size:26px;color:#ffb6d3;text-shadow:0 0 14px #ff2d95}
+/* S3 neon */
+.neon{position:absolute;top:100%;white-space:nowrap;color:#ff7cc0;text-shadow:0 0 5px #ff2d95,0 0 16px #ff2d95;font-family:"Dancing Script","Segoe Script",cursive;font-weight:700;pointer-events:none;animation:drift linear forwards}
+@keyframes drift{from{transform:translate3d(0,0,0) rotate(var(--r))}to{transform:translate3d(var(--dx),-115vh,0) rotate(var(--r))}}
+.card{position:absolute;top:100%;border:3px solid #fff;border-radius:8px;object-fit:cover;object-position:center 25%;aspect-ratio:3/4;box-shadow:0 0 16px #ff4fa388;animation:drift linear forwards;cursor:pointer}
+.petal{position:fixed;top:-20px;width:11px;height:14px;background:#ff3b4e;border-radius:60% 0 60% 60%;box-shadow:0 0 8px #ff3b4e88;pointer-events:none;animation:fall linear forwards;z-index:3}
+@keyframes fall{to{transform:translate3d(var(--dx),110vh,0) rotate(540deg)}}
+#zoom{position:fixed;inset:0;background:#000c;display:none;align-items:center;justify-content:center;z-index:20}
+#zoom.on{display:flex}
+#zoom img{max-width:88vw;max-height:84vh;border:4px solid #fff;border-radius:12px;box-shadow:0 0 40px #ff4fa3}
+.btn{border:0;border-radius:999px;padding:13px 24px;font-weight:700;font-size:15px;background:#ff6f9f;color:#fff;cursor:pointer;box-shadow:0 0 22px #ff4fa388}
+#next{position:fixed;bottom:calc(28px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);opacity:0;pointer-events:none;transition:opacity 1s;z-index:5}
+#next.on{opacity:1;pointer-events:auto}
+#snd{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:30;width:42px;height:42px;border-radius:50%;border:1px solid #ff8fc0;background:#0008;color:#fff;font-size:18px;display:none;cursor:pointer}
+/* S4 envelope */
+#s4{background:radial-gradient(circle at 50% 40%,#3a1230,#07030a 70%);cursor:pointer}
+.env{position:relative;width:min(84vw,340px);aspect-ratio:3/2;perspective:900px}
+.env .body{position:absolute;inset:0;border-radius:6px;background:linear-gradient(160deg,#fff0f4,#ffd9e5);box-shadow:0 14px 40px #000a;text-align:center;padding-top:30%}
+.env .body b{display:block;font-family:Georgia,serif;font-size:34px;font-weight:400;color:#b5476f;letter-spacing:.05em}
+.env .body i{font-size:24px;color:#c8668a}
+.env .body small{color:#c8668a;font-size:12px}
+.flap{position:absolute;left:0;right:0;top:0;height:58%;background:#ffc9d9;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .9s .1s,z-index 0s .5s;z-index:3}
+.seal{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ff6a7a,#b3122f);color:#ffd6dc;font-size:12px;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 3px 10px #0008;z-index:4;transition:opacity .4s}
+.env.open .flap{transform:rotateX(180deg);z-index:0}
+.env.open .seal{opacity:0}
+/* S5 letter */
+#s5{background:linear-gradient(#2a0e22,#07030a)}
+.letter{position:relative;width:min(92vw,420px);max-height:92vh;overflow:auto;background:linear-gradient(#fff8fa,#ffe9f0);border-radius:10px;padding:34px 26px 26px;color:#7a3b55;text-align:center;box-shadow:0 0 50px #ff4fa355;transform:translateY(40px) scale(.94);transition:transform 1.2s}
+#s5.on .letter{transform:none}
+.letter h2{font-size:32px;margin:0 0 12px;color:#c0457a;font-weight:700}
+.letter p{font-size:22px;line-height:1.55;margin:0 0 16px;white-space:pre-line}
+.letter .ph{width:78%;aspect-ratio:3/4;object-fit:cover;object-position:center 25%;border-radius:12px;border:5px solid #fff;box-shadow:0 8px 22px #c7357055}
+.fl{position:absolute;font-size:34px;opacity:.85}
+</style>
+</head>
+<body>
+<button id="snd" aria-label="Bật/tắt nhạc">🔊</button>
+
+<section class="scene on" id="s1"><div class="gift">🎁</div><h2 class="script" style="font-size:30px;margin:12px 0 0">Có một món quà dành cho em</h2><p class="hint">Chạm vào màn hình để mở quà</p></section>
+
+<section class="scene" id="s2"><div id="bqwrap" style="position:relative;display:flex;justify-content:center"><svg id="bq" viewBox="0 0 300 400" aria-hidden="true"></svg></div><div class="cap script" id="cap"></div></section>
+
+<section class="scene" id="s3"><button class="btn" id="next">Mở thư 💌</button></section>
+
+<section class="scene" id="s4"><div class="env" id="env"><div class="body"><i class="script">Dành tặng em</i><b>20/10</b><small>Một chút yêu thương</small></div><div class="flap"></div><div class="seal">♥</div></div><p class="hint" id="eh">Chạm phong bì để mở thư</p></section>
+
+<section class="scene" id="s5"><div class="letter"><span class="fl" style="left:6px;top:4px">🌸</span><span class="fl" style="right:8px;top:30px">🌷</span><h2 class="script" id="rc"></h2><p class="script" id="msg"></p><img class="ph" id="lph" alt="Ảnh kỷ niệm"><p class="script" style="font-size:20px;margin:16px 0 0">Mong mọi điều dịu dàng sẽ đến với em 🌹</p><span class="fl" style="left:10px;bottom:6px">🌹</span></div></section>
+
+<div id="zoom"><img id="zimg" alt=""></div>
+<audio id="music" loop></audio>
+
+<script>
+/* ===== TÙY CHỈNH QUÀ TẶNG Ở ĐÂY ===== */
+const CONFIG = {
+  recipient: "Gửi em người anh iuuu💗💗💗",
+  message: "Chúc người yêu anh một ngày 20-10 thật vui vẻ, mạnh khỏe, hạnh phúc bên Dương nhé. Anh yêu em nhìuu lắm.💗",
+  photos: ["anh-ky-niem.jpg","anh1.jpg","anh2.jpg","anh3.jpg","anh4.jpg","anh5.jpg","anh6.jpg","anh7.jpg","anh9.jpg","anh10.jpg","anh11.jpg","anh12.jpg"],
+  music: "nhac-nen.mp3",     // nhạc cùng thư mục; "" nếu không dùng
+  phrases: ["Chúc em luôn xinh đẹp","Yêu em","20/10","Chúc em luôn yêu đời","Mong mọi điều dịu dàng sẽ đến với em","Chúc mừng ngày Phụ nữ Việt Nam","Mãi yêu em","Anh yêu em nhìuu lắm","Chúc em thật nhiều may mắn"]
+};
+/* =================================== */
+const $=id=>document.getElementById(id), R=Math.random, pick=a=>a[Math.floor(R()*a.length)];
+const audio=$("music"), snd=$("snd"); let PH=[], timers=[], started=false;
+if(CONFIG.music)audio.src=CONFIG.music;
+$("rc").textContent=CONFIG.recipient; $("msg").textContent=CONFIG.message; $("cap").textContent=CONFIG.recipient;
+const loaded=Promise.all(CONFIG.photos.map(src=>new Promise(r=>{const i=new Image();i.onload=()=>r(src);i.onerror=()=>r(null);i.src=src}))).then(a=>{PH=a.filter(Boolean);if(PH.length){$("lph").src=PH[0];$("zimg").src=PH[0]}else $("lph").style.display="none"});
+for(let i=0;i<70;i++){const s=document.createElement("div");s.className="star";const z=1+R()*2;s.style.cssText=`left:${R()*100}vw;top:${R()*100}vh;width:${z}px;height:${z}px;animation-delay:-${R()*3}s;opacity:${.4+R()*.6}`;document.body.prepend(s)}
+function show(id){document.querySelectorAll(".scene").forEach(s=>s.classList.toggle("on",s.id===id))}
+function later(f,ms){timers.push(setTimeout(f,ms))}
+/* bó hoa */
+function buildBouquet(){
+ const pk="--c1:#f6b3c6;--c2:#ee93ae;--c3:#e0698d", cr="--c1:#fde6d6;--c2:#f9cfbd;--c3:#f1b3a0";
+ let h=`<defs><g id="r"><g fill="var(--c1)">${[0,60,120,180,240,300].map(a=>`<ellipse cx="0" cy="-15" rx="14" ry="17" transform="rotate(${a})"/>`).join("")}</g><g fill="var(--c2)">${[30,102,174,246,318].map(a=>`<ellipse cx="0" cy="-9" rx="10" ry="12" transform="rotate(${a})"/>`).join("")}</g><g fill="var(--c3)">${[0,90,180,270].map(a=>`<ellipse cx="0" cy="-5" rx="7" ry="8" transform="rotate(${a})"/>`).join("")}</g><path d="M-3 0a3 3 0 1 1 3 3" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1"/></g><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff4f8"/><stop offset="1" stop-color="#f4b6ca"/></linearGradient><linearGradient id="wg2" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff4f8"/><stop offset="1" stop-color="#f4b6ca"/></linearGradient><radialGradient id="ft"><stop offset=".55" stop-color="#fff"/><stop offset="1" stop-color="#000"/></radialGradient><mask id="mk" maskContentUnits="objectBoundingBox"><ellipse cx=".5" cy=".5" rx=".5" ry=".5" fill="url(#ft)"/></mask></defs>`;
+ const leaf=(x,y,a,k)=>`<g transform="translate(${x} ${y}) rotate(${a}) scale(${k})"><path class="bl" style="--d:${.5+R()*.6}s" d="M0 0C10 -12 10 -32 0 -44C-10 -32 -10 -12 0 0Z" fill="#6aa877"/></g>`;
+ const gyp=(n,edge)=>{for(let i=0;i<n;i++){const a=R()*6.28,d=edge?.78+R()*.3:Math.sqrt(R());h+=`<circle class="fade" style="--d:${2+R()*2.5}s" cx="${150+Math.cos(a)*d*128}" cy="${125+Math.sin(a)*d*108}" r="${1.4+R()*2.4}" fill="#fff" opacity=".92"/>`}};
+ /* giấy gói phía sau */
+ h+=`<g class="bl" style="--d:0s"><path d="M72 150L228 150L184 338L116 338Z" fill="#fff1f5"/><path d="M150 335C70 310 12 245 20 168C24 128 56 126 72 150C96 190 122 250 150 335Z" fill="url(#wg)" stroke="#f0a9c0"/><path d="M150 335C230 310 288 245 280 168C276 128 244 126 228 150C204 190 178 250 150 335Z" fill="url(#wg2)" stroke="#f0a9c0"/></g>`;
+ gyp(70,false);
+ [[60,150,-60,1],[240,150,60,1],[100,56,-35,.9],[200,56,35,.9],[150,22,0,.8],[38,192,-80,.9],[262,192,80,.9]].forEach(a=>h+=leaf(...a));
+ /* ảnh */
+ const slots=[[150,80,44,52],[88,124,38,46],[212,124,38,46],[116,180,40,48],[186,180,40,48]];
+ slots.forEach(([x,y,rx,ry],i)=>{const d=1+i*.55;
+  if(PH.length)h+=`<g class="bl" style="--d:${d}s"><image href="${PH[i%PH.length]}" x="${x-rx}" y="${y-ry}" width="${rx*2}" height="${ry*2}" preserveAspectRatio="xMidYMin slice" mask="url(#mk)"/></g>`;
+  else h+=`<g transform="translate(${x} ${y})"><g class="bl" style="--d:${d}s"><use href="#r" transform="scale(1.5)" style="${i%2?cr:pk}"/></g></g>`});
+ /* hoa hồng quanh khung ảnh */
+ [[58,214,1,pk],[242,214,1,cr],[100,236,.85,cr],[200,236,.85,pk],[150,244,1.05,pk],[40,166,.7,cr],[260,166,.7,pk]].forEach(([x,y,k,c],i)=>h+=`<g transform="translate(${x} ${y})"><g class="bl" style="--d:${3.6+i*.25}s"><use href="#r" transform="scale(${k})" style="${c}"/></g></g>`);
+ gyp(26,true);
+ /* giấy gói phía trước */
+ h+=`<g class="bl" style="--d:3.2s"><path d="M26 200C74 208 126 262 150 350L92 368C44 322 20 262 26 200Z" fill="url(#wg)" stroke="#f0a9c0"/><path d="M274 200C226 208 174 262 150 350L208 368C256 322 280 262 274 200Z" fill="url(#wg2)" stroke="#f0a9c0"/><path d="M40 218C80 244 118 288 136 346M260 218C220 244 182 288 164 346" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/></g>`;
+ /* nơ */
+ h+=`<g class="bl" style="--d:4.2s"><path d="M140 312L98 384L136 366L150 392ZM160 312L202 384L164 366L150 392Z" fill="#f6a9c0"/><path d="M150 305C104 262 44 282 54 328C64 358 124 342 150 305ZM150 305C196 262 256 282 246 328C236 358 176 342 150 305Z" fill="#ee8fae"/><path d="M138 306C104 290 72 300 68 324M162 306C196 290 228 300 232 324" fill="none" stroke="#f9c9d8" stroke-width="4" stroke-linecap="round"/><ellipse cx="150" cy="305" rx="16" ry="14" fill="#e07799"/></g>`;
+ $("bq").innerHTML=h;
+}
+function startScene2(){
+ show("s2"); buildBouquet(); const w=$("bqwrap");
+ w.insertAdjacentHTML("beforeend",`<span class="bf" style="left:-6%;top:12%">🦋</span><span class="bf" style="right:-4%;top:28%;animation-delay:-2s">🦋</span>`);
+ later(startScene3,11000);
+}
+/* cảnh neon */
+function neon(pre){const t=document.createElement("span");t.className="neon";t.textContent=pick(CONFIG.phrases);const big=R()<.2;t.style.cssText=`left:${R()*70}vw;font-size:${big?26+R()*10:14+R()*8}px;--r:${R()*30-15}deg;--dx:${R()*30-15}vw;animation-duration:${10+R()*6}s;animation-delay:${pre?-R()*9:0}s`;$("s3").appendChild(t);setTimeout(()=>t.remove(),17000)}
+function card(pre){if(!PH.length)return;const c=document.createElement("img");c.className="card";c.src=pick(PH);c.alt="";c.style.cssText=`left:${R()*75}vw;width:${60+R()*50}px;--r:${R()*20-10}deg;--dx:${R()*20-10}vw;animation-duration:${14+R()*6}s;animation-delay:${pre?-R()*10:0}s`;c.onclick=()=>{$("zimg").src=c.src;$("zoom").classList.add("on")};$("s3").appendChild(c);setTimeout(()=>c.remove(),21000)}
+function petal(){const p=document.createElement("span");p.className="petal";p.style.cssText=`left:${R()*100}vw;--dx:${R()*20-10}vw;animation-duration:${6+R()*5}s`;document.body.appendChild(p);setTimeout(()=>p.remove(),12000)}
+let loop;
+function startScene3(){
+ clearTimeout(timers.pop()); show("s3");
+ for(let i=0;i<14;i++)neon(true); for(let i=0;i<5;i++)card(true);
+ loop=setInterval(()=>{neon();petal();if(R()<.3)card()},650);
+ later(()=>$("next").classList.add("on"),9000);
+}
+$("zoom").onclick=()=>$("zoom").classList.remove("on");
+$("next").onclick=()=>{clearInterval(loop);$("next").classList.remove("on");show("s4")};
+$("env").parentElement.onclick=()=>{const e=$("env");if(e.classList.contains("open"))return;e.classList.add("open");$("eh").style.opacity=0;later(()=>show("s5"),1500)};
+/* mở đầu + nhạc */
+$("s1").onclick=async()=>{ if(started)return; started=true;
+ let pl; if(CONFIG.music){snd.style.display="block";pl=audio.play()}
+ await loaded; startScene2();
+ if(pl)pl.catch(()=>{snd.textContent="🔇"});};
+snd.onclick=()=>{ if(audio.paused){audio.play().then(()=>snd.textContent="🔊").catch(()=>{})}else{audio.pause();snd.textContent="🔇"} };
+</script>
+</body>
+</html>
